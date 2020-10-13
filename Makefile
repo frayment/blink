@@ -38,7 +38,7 @@ test: all
 dist:
 	rm -rf blink-$(VERSION)
 	mkdir -p blink-$(VERSION)
-	cp -R COPYING README Makefile src include blink-$(VERSION)
+	cp -R COPYING README INSTALL Makefile src include blink-$(VERSION)
 	tar -cJf blink-$(VERSION).tar.xz blink-$(VERSION)
 	rm -rf blink-$(VERSION)
 
