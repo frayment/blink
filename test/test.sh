@@ -1,6 +1,11 @@
 #!/bin/sh
 
 #
+# This file is licensed under BSD 3-Clause.
+# All license information is available in the included COPYING file.
+#
+
+#
 # test.sh
 # This file will check the output of test files against known
 # correct opcode sequences. Do not call this file directly,

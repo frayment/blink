@@ -1,4 +1,9 @@
 /*
+ * This file is licensed under BSD 3-Clause.
+ * All license information is available in the included COPYING file.
+ */
+
+/*
  * mov.c
  * x86_64 mov instruction test
  *
