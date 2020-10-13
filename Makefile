@@ -46,6 +46,7 @@ install: all
 	mkdir -p $(PREFIX)/include/blink
 	cp -f $(HEADERS) $(PREFIX)/include/blink
 	for hdr in $(PREFIX)/include/blink/*.h; do chmod 644 $$hdr; done
+	chmod 755 $(PREFIX)/include/blink
 	mkdir -p $(PREFIX)/lib
 	cp -f lib/$(LIB) $(PREFIX)/lib
 	chmod 755 $(PREFIX)/lib/$(LIB)
