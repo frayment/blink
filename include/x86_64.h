@@ -1,4 +1,9 @@
 /*
+ * This file is licensed under BSD 3-Clause.
+ * All license information is available in the included COPYING file.
+ */
+
+/*
  * x86_64.h
  * x86_64 encoder header
  *
