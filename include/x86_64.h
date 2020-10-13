@@ -95,6 +95,9 @@ size_t x86_64_sub_rm64_imm8(X86_64_REG, int8_t);
 size_t x86_64_sub_r32_r32(X86_64_REG, X86_64_REG);
 size_t x86_64_sub_r64_r64(X86_64_REG, X86_64_REG);
 
+size_t x86_64_cmp_r64_imm8(X86_64_REG, int8_t);
+size_t x86_64_cmp_rm64_imm8(X86_64_REG, int8_t);
+
 size_t x86_64_jmp_rel8(int8_t);
 size_t x86_64_jmp_rel32(int32_t);
 
