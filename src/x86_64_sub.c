@@ -4,7 +4,7 @@
  */
 
 /*
- * x86_64.c
+ * x86_64_sub.c
  * x86_64 encoder for sub instruction
  *
  * Author       : Finn Rayment <finn@rayment.fr>

@@ -4,7 +4,7 @@
  */
 
 /*
- * x86_64.c
+ * x86_64_add.c
  * x86_64 encoder for add instruction
  *
  * Author       : Finn Rayment <finn@rayment.fr>
