@@ -36,7 +36,7 @@ x86_64_mov_rm64_imm8(X86_64_REG reg,
                      int8_t value)
 {
 	return (X86_64_REG64(reg) ? x86_64_rex(0, 0, 0, 1) : 0) +
-	       x86_64_write(0xc6) +
+	       x86_64_write((int8_t) 0xc6) +
 	       x86_64_write(0x0) +
 	       x86_64_write(value);
 }
@@ -46,7 +46,7 @@ x86_64_mov_r64_r64(X86_64_REG rega,
                    X86_64_REG regb)
 {
 	return x86_64_rex(1, X86_64_REG64(regb), 0, X86_64_REG64(rega)) +
-	       x86_64_write(0x89) +
+	       x86_64_write((int8_t) 0x89) +
 	       x86_64_modrm(3, rega, regb);
 }
 

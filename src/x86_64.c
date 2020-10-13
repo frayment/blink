@@ -106,19 +106,19 @@ x86_64_modrm(int mod,
 size_t
 x86_64_jmp_rel8(int8_t off)
 {
-	return x86_64_write(0xeb) + x86_64_write(off);
+	return x86_64_write((int8_t) 0xeb) + x86_64_write(off);
 }
 
 size_t
 x86_64_jmp_rel32(int32_t off)
 {
-	return x86_64_write(0xe9) + x86_64_imm32(off);
+	return x86_64_write((int8_t) 0xe9) + x86_64_imm32(off);
 }
 
 size_t
 x86_64_call_rel32(int32_t off)
 {
-	return x86_64_write(0xe8) + x86_64_imm32(off);
+	return x86_64_write((int8_t) 0xe8) + x86_64_imm32(off);
 }
 
 size_t
@@ -130,7 +130,7 @@ x86_64_syscall()
 size_t
 x86_64_ret_near()
 {
-	return x86_64_write(0xc3);
+	return x86_64_write((int8_t) 0xc3);
 }
 
 void
