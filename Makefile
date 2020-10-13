@@ -51,5 +51,5 @@ uninstall:
 	rm -f $(PREFIX)/lib/$(LIB)
 	rm -rf $(PREFIX)/include/blink
 
-.PHONY: all dirs clean install uninstall
+.PHONY: all dirs clean dist install uninstall
 
