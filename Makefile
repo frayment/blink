@@ -32,6 +32,9 @@ dirs:
 clean:
 	rm -rf lib obj
 
+test: all
+	cd test && sh test.sh
+
 dist:
 	rm -rf blink-$(VERSION)
 	mkdir -p blink-$(VERSION)
@@ -51,5 +54,5 @@ uninstall:
 	rm -f $(PREFIX)/lib/$(LIB)
 	rm -rf $(PREFIX)/include/blink
 
-.PHONY: all dirs clean dist install uninstall
+.PHONY: all dirs clean test dist install uninstall
 
