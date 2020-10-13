@@ -1,0 +1,27 @@
+blink - cross-platform instruction encoding library
+
+---------------------------------------------------
+
+blink is a static library written in C that can write machine code bytes for a
+variety of instruction sets directly to a file stream.
+
+Currently supported instruction sets are:
+	- x86_64
+
+Please note:
+
+This library is a private project for use in my own software. It is in no way
+complete and does not aim to be complete. MANY opcodes are missing and will
+most likely never be implemented. Those that are implemented are probably
+missing at least half of the valid encodings.
+
+If you would like to add additional encodings or instruction sets, you are more
+than welcome to modify the library and send me the changes via. email
+(which you will find my address scattered at the top of my source files)
+and I will happily incorporate the changes.
+
+To install blink on a machine, read the INSTALL file.
+
+blink is licensed under BSD 3-Clause.
+All license information is available in the included COPYING file.
+
