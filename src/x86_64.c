@@ -16,6 +16,8 @@ static FILE *enc_fp = NULL;
 size_t
 x86_64_write(int8_t i)
 {
+	if (enc_fp == NULL)
+		return sizeof(i);
 	return fwrite(&i, sizeof(i), 1, enc_fp);
 }
 
@@ -27,6 +29,8 @@ x86_64_imm32(int32_t i)
 	       (i & 0x0000FF00) >> 8,
 	       (i & 0x00FF0000) >> 16,
 	       (i & 0xFF000000) >> 24);*/
+	if (enc_fp == NULL)
+		return sizeof(i);
 	return fwrite(&i, sizeof(i), 1, enc_fp);
 }
 
@@ -42,6 +46,8 @@ x86_64_imm64(int64_t i)
 	       (i & 0x0000FF0000000000) >> 40,
 	       (i & 0x00FF000000000000) >> 48,
 	       (i & 0xFF00000000000000) >> 56);*/
+	if (enc_fp == NULL)
+		return sizeof(i);
 	return fwrite(&i, sizeof(i), 1, enc_fp);
 }
 
@@ -60,7 +66,7 @@ x86_64_rex(int w,
 		i += 1 << 1;
 	if (b)
 		i += 1;
-	return fwrite(&i, sizeof(i), 1, enc_fp);
+	return x86_64_write(i);
 }
 
 /*
@@ -89,7 +95,7 @@ x86_64_modrm(int mod,
 		rm -= 8;
 	/* 0x40 * mod will give an offset for mod 01, 10 and 11 */
 	val = table[rm][reg] + (0x40 * mod);
-	return fwrite(&val, sizeof(val), 1, enc_fp);
+	return x86_64_write(val);
 }
 
 size_t
