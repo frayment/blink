@@ -49,7 +49,7 @@ x86_64_add_r64_imm64(X86_64_REG reg,
 
 size_t
 x86_64_add_rm64_imm8(X86_64_REG reg,
-                    int8_t value)
+                     int8_t value)
 {
 	return (X86_64_REG64(reg) ? x86_64_rex(0, 0, 0, 1) : 0) +
 	       x86_64_write(0x80) +
@@ -59,7 +59,7 @@ x86_64_add_rm64_imm8(X86_64_REG reg,
 
 size_t
 x86_64_add_r32_r32(X86_64_REG rega,
-                  X86_64_REG regb)
+                   X86_64_REG regb)
 {
 	return x86_64_write(0x01) +
 	       x86_64_modrm(3, rega, regb);

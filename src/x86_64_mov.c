@@ -28,7 +28,7 @@ x86_64_mov_r64_imm64(X86_64_REG reg,
 
 size_t
 x86_64_mov_rm64_imm8(X86_64_REG reg,
-                    int8_t value)
+                     int8_t value)
 {
 	return (X86_64_REG64(reg) ? x86_64_rex(0, 0, 0, 1) : 0) +
 	       x86_64_write(0xc6) +

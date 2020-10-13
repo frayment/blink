@@ -46,7 +46,10 @@ x86_64_imm64(int64_t i)
 }
 
 size_t
-x86_64_rex(int w, int r, int x, int b)
+x86_64_rex(int w,
+           int r,
+           int x,
+           int b)
 {
 	uint8_t i = 0x40;
 	if (w)
@@ -64,7 +67,9 @@ x86_64_rex(int w, int r, int x, int b)
  * mod argument should be 0, 1, 2 or 3 (representing 00, 01, 10 and 11)
  */
 size_t
-x86_64_modrm(int mod, int reg, int rm)
+x86_64_modrm(int mod,
+             int reg,
+             int rm)
 {
 	int8_t val;
 	/* 32-bit modr/m table for mod 00 */
