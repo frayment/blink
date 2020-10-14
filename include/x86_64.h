@@ -100,6 +100,8 @@ size_t x86_64_cmp_rm64_imm8(X86_64_REG, int8_t);
 
 size_t x86_64_jmp_rel8(int8_t);
 size_t x86_64_jmp_rel32(int32_t);
+size_t x86_64_jne_rel8(int8_t);
+size_t x86_64_jne_rel32(int32_t);
 
 size_t x86_64_call_rel32(int32_t);
 
