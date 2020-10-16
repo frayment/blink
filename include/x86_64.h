@@ -111,5 +111,10 @@ size_t x86_64_call_rel32(int32_t);
 size_t x86_64_syscall();
 size_t x86_64_ret_near();
 
+size_t x86_64_pusha();
+size_t x86_64_popa();
+size_t x86_64_pushf();
+size_t x86_64_popf();
+
 #endif
 

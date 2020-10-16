@@ -156,6 +156,30 @@ x86_64_ret_near()
 	return x86_64_write((int8_t) 0xc3);
 }
 
+size_t
+x86_64_pusha()
+{
+	return x86_64_write(0x60);
+}
+
+size_t
+x86_64_popa()
+{
+	return x86_64_write(0x61);
+}
+
+size_t
+x86_64_pushf()
+{
+	return x86_64_write((int8_t) 0x9c);
+}
+
+size_t
+x86_64_popf()
+{
+	return x86_64_write((int8_t) 0x9d);
+}
+
 void
 x86_64_encoder_out(FILE *fp)
 {
