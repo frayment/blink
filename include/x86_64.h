@@ -71,6 +71,9 @@ size_t x86_64_imm64(int64_t);
 size_t x86_64_rex(int, int, int, int);
 size_t x86_64_modrm(int, int, int);
 
+size_t x86_64_xor_r32_r32(X86_64_REG, X86_64_REG);
+size_t x86_64_xor_r64_r64(X86_64_REG, X86_64_REG);
+
 size_t x86_64_mov_r32_imm32(X86_64_REG, int32_t);
 size_t x86_64_mov_r64_imm64(X86_64_REG, int64_t);
 size_t x86_64_mov_rm64_imm8(X86_64_REG, int8_t);

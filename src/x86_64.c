@@ -104,12 +104,29 @@ x86_64_modrm(int mod,
 }
 
 size_t
+x86_64_xor_r32_r32(X86_64_REG rega, X86_64_REG regb)
+{
+	return (X86_64_REG64(rega) || X86_64_REG64(regb) ?
+	           x86_64_rex(0, X86_64_REG64(regb), 0, X86_64_REG64(rega)) : 0) +
+	       x86_64_write(0x31) +
+	       x86_64_modrm(3, rega, regb);
+}
+
+size_t
+x86_64_xor_r64_r64(X86_64_REG rega, X86_64_REG regb)
+{
+	return x86_64_rex(1, X86_64_REG64(regb), 0, X86_64_REG64(rega)) +
+	       x86_64_write(0x31) +
+	       x86_64_modrm(3, rega, regb);
+}
+
+size_t
 x86_64_cmp_r64_imm8(X86_64_REG reg, int8_t value)
 {
 	return x86_64_rex(1, 0, 0, X86_64_REG64(reg)) +
 	       x86_64_write((int8_t) 0x83) +
 	       x86_64_write((int8_t) 0xf8 + (X86_64_REG64(reg) ? reg - 8 : reg)) +
-	       x86_64_write(value);;
+	       x86_64_write(value);
 }
 
 size_t
