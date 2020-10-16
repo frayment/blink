@@ -37,7 +37,8 @@ mos6502_imm16(int16_t i)
 {
 	if (enc_fp == NULL)
 		return sizeof(i);
-	return mos6502_write((i & 0xFF00) >> 8) + mos6502_write(i & 0x00FF);
+	return fwrite(&i, sizeof(i), 1, enc_fp);
+	/*return mos6502_write((i & 0xFF00) >> 8) + mos6502_write(i & 0x00FF);*/
 }
 
 size_t
