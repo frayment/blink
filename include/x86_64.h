@@ -116,5 +116,9 @@ size_t x86_64_popa();
 size_t x86_64_pushf();
 size_t x86_64_popf();
 
+size_t x86_64_nop();
+size_t x86_64_nop_r32(X86_64_REG);
+size_t x86_64_nop_r64(X86_64_REG);
+
 #endif
 

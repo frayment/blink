@@ -180,6 +180,30 @@ x86_64_popf()
 	return x86_64_write((int8_t) 0x9d);
 }
 
+size_t
+x86_64_nop()
+{
+	return x86_64_write((int8_t) 0x90);
+}
+
+size_t
+x86_64_nop_r32(X86_64_REG reg)
+{
+	return (X86_64_REG64(reg) ? x86_64_rex(0, 0, 0, 1) : 0) +
+	       x86_64_write(0x0f) +
+	       x86_64_write(0x1f) +
+	       x86_64_modrm(3, reg, X86_64_RAX);
+}
+
+size_t
+x86_64_nop_r64(X86_64_REG reg)
+{
+	return x86_64_rex(1, 0, 0, X86_64_REG64(reg)) +
+	       x86_64_write(0x0f) +
+	       x86_64_write(0x1f) +
+	       x86_64_modrm(3, reg, X86_64_RAX);
+}
+
 void
 x86_64_encoder_out(FILE *fp)
 {
