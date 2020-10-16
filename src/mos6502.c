@@ -72,3 +72,45 @@ mos6502_bit_abs16(int16_t value)
 	return mos6502_write(0x2c) + mos6502_imm16(value);
 }
 
+size_t
+mos6502_brk()
+{
+	return mos6502_write(0x00);
+}
+
+size_t
+mos6502_cpx_imm8(int8_t value)
+{
+	return mos6502_write(0xe0) + mos6502_write(value);
+}
+
+size_t
+mos6502_cpx_abs8(int8_t value)
+{
+	return mos6502_write(0xe4) + mos6502_write(value);
+}
+
+size_t
+mos6502_cpx_abs16(int16_t value)
+{
+	return mos6502_write(0xec) + mos6502_imm16(value);
+}
+
+size_t
+mos6502_cpy_imm8(int8_t value)
+{
+	return mos6502_write(0xc0) + mos6502_write(value);
+}
+
+size_t
+mos6502_cpy_abs8(int8_t value)
+{
+	return mos6502_write(0xc4) + mos6502_write(value);
+}
+
+size_t
+mos6502_cpy_abs16(int16_t value)
+{
+	return mos6502_write(0xcc) + mos6502_imm16(value);
+}
+

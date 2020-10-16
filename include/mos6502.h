@@ -80,5 +80,33 @@ size_t mos6502_asl_abs16_rx(int16_t);
 size_t mos6502_bit_abs8(int8_t);
 size_t mos6502_bit_abs16(int16_t);
 
+size_t mos6502_bcc_rel8(int8_t);
+size_t mos6502_bcs_rel8(int8_t);
+size_t mos6502_beq_rel8(int8_t);
+size_t mos6502_bmi_rel8(int8_t);
+size_t mos6502_bne_rel8(int8_t);
+size_t mos6502_bpl_rel8(int8_t);
+size_t mos6502_bvc_rel8(int8_t);
+size_t mos6502_bvs_rel8(int8_t);
+
+size_t mos6502_brk();
+
+size_t mos6502_cmp_imm8(int8_t);
+size_t mos6502_cmp_abs8(int8_t);
+size_t mos6502_cmp_abs8_rx(int8_t);
+size_t mos6502_cmp_abs16(int16_t);
+size_t mos6502_cmp_abs16_rx(int16_t);
+size_t mos6502_cmp_abs16_ry(int16_t);
+size_t mos6502_cmp_ind8_rx(int8_t);
+size_t mos6502_cmp_ind8_ry(int8_t);
+
+size_t mos6502_cpx_imm8(int8_t);
+size_t mos6502_cpx_abs8(int8_t);
+size_t mos6502_cpx_abs16(int16_t);
+
+size_t mos6502_cpy_imm8(int8_t);
+size_t mos6502_cpy_abs8(int8_t);
+size_t mos6502_cpy_abs16(int16_t);
+
 #endif
 
