@@ -268,3 +268,81 @@ mos6502_nop()
 	return mos6502_write((int8_t) 0xea);
 }
 
+size_t
+mos6502_pha()
+{
+	return mos6502_write(0x48);
+}
+
+size_t
+mos6502_php()
+{
+	return mos6502_write(0x08);
+}
+
+size_t
+mos6502_pla()
+{
+	return mos6502_write(0x68);
+}
+
+size_t
+mos6502_rol_imm8(int8_t value)
+{
+	return mos6502_write(0x2a) + mos6502_write(value);
+}
+
+size_t
+mos6502_rol_abs8(int8_t value)
+{
+	return mos6502_write(0x26) + mos6502_write(value);
+}
+
+size_t
+mos6502_rol_abs8_regx(int8_t value)
+{
+	return mos6502_write(0x36) + mos6502_write(value);
+}
+
+size_t
+mos6502_rol_abs16(int16_t value)
+{
+	return mos6502_write(0x2e) + mos6502_imm16(value);
+}
+
+size_t
+mos6502_rol_abs16_regx(int16_t value)
+{
+	return mos6502_write(0x3e) + mos6502_imm16(value);
+}
+
+size_t
+mos6502_ror_imm8(int8_t value)
+{
+	return mos6502_write(0x6a) + mos6502_write(value);
+}
+
+size_t
+mos6502_ror_abs8(int8_t value)
+{
+	return mos6502_write(0x66) + mos6502_write(value);
+}
+
+size_t
+mos6502_ror_abs8_regx(int8_t value)
+{
+	return mos6502_write(0x76) + mos6502_write(value);
+}
+
+size_t
+mos6502_ror_abs16(int16_t value)
+{
+	return mos6502_write(0x6e) + mos6502_imm16(value);
+}
+
+size_t
+mos6502_ror_abs16_regx(int16_t value)
+{
+	return mos6502_write(0x7e) + mos6502_imm16(value);
+}
+
