@@ -13,6 +13,9 @@ Using GNU Make:
     Note also that a Unix-like system is most likely required.
   - You can tweak the "PREFIX" variable in Makefile to change the install
     location to your liking.
+  - You can also tweak the "PLATFORMS" variable in Makefile to specify which
+    platforms you want to build into the library and/or install to the system.
+    Removing unnecessary platforms will result in a much smaller library file.
   - If your C compiler does not have a system link to `cc`, edit Makefile and
     change the "CC" variable to the correct command.
 
