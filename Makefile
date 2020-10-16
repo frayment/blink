@@ -9,17 +9,26 @@ VERSION=1.0
 LIB:=libblink.a
 PREFIX:=/usr/local
 
+# This variable lists all platforms to be included in the build.
+# If you do not want to include a platform, remove it from the list and it will
+# not be compiled into the resulting library and its header will not be
+# installed if `make install` is run.
+PLATFORMS:=mos6502 x86_64
+
 CC:=cc
 CCFLAGS:=-O2 --std=c89 \
          -Wall -Wextra -Wpedantic -Werror --pedantic-errors \
          -DVERSION=\"${VERSION}\"
 
-SOURCES:=$(wildcard src/*.c)
+SOURCES:=$(foreach platform,$(PLATFORMS),$(wildcard src/$(platform)*.c))
+#SOURCES:=$(wildcard src/*.c)
 OBJECTS:=$(patsubst src/%,obj/%,$(patsubst %.c,%.o,$(SOURCES)))
-HEADERS:=$(wildcard include/*.h)
+HEADERS:=$(patsubst %,include/%.h,$(PLATFORMS))
+#HEADERS:=$(wildcard include/*.h)
 INCLUDE:=-Iinclude/
 
 all: dirs $(OBJECTS)
+	rm -f lib/$(LIB)
 	ar -crv lib/$(LIB) $(OBJECTS)
 	ranlib lib/$(LIB)
 
