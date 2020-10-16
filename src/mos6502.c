@@ -394,3 +394,73 @@ mos6502_sty_abs16(int16_t value)
 	return mos6502_write(0x8c) + mos6502_imm16(value);
 }
 
+size_t mos6502_tax()
+{
+	return mos6502_write(0xaa);
+}
+
+size_t mos6502_tay()
+{
+	return mos6502_write(0xa8);
+}
+
+size_t mos6502_txa()
+{
+	return mos6502_write(0x8a);
+}
+
+size_t mos6502_tya()
+{
+	return mos6502_write(0x98);
+}
+
+size_t mos6502_inx()
+{
+	return mos6502_write(0xe8);
+}
+
+size_t mos6502_iny()
+{
+	return mos6502_write(0xc8);
+}
+
+size_t mos6502_dex()
+{
+	return mos6502_write(0xca);
+}
+
+size_t mos6502_dey()
+{
+	return mos6502_write(0x88);
+}
+
+size_t mos6502_tsx()
+{
+	return mos6502_write(0xba);
+}
+
+size_t mos6502_txs()
+{
+	return mos6502_write(0x9a);
+}
+
+size_t mos6502_pha()
+{
+	return mos6502_write(0x48);
+}
+
+size_t mos6502_php()
+{
+	return mos6502_write(0x08);
+}
+
+size_t mos6502_pla()
+{
+	return mos6502_write(0x68);
+}
+
+size_t mos6502_plp()
+{
+	return mos6502_write(0x28);
+}
+

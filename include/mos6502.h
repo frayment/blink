@@ -219,5 +219,21 @@ size_t mos6502_sty_abs8(int8_t);
 size_t mos6502_sty_abs8_ry(int8_t);
 size_t mos6502_sty_abs16(int16_t);
 
+size_t mos6502_tax();
+size_t mos6502_tay();
+size_t mos6502_txa();
+size_t mos6502_tya();
+size_t mos6502_inx();
+size_t mos6502_iny();
+size_t mos6502_dex();
+size_t mos6502_dey();
+
+size_t mos6502_tsx();
+size_t mos6502_txs();
+size_t mos6502_pha();
+size_t mos6502_php();
+size_t mos6502_pla();
+size_t mos6502_plp();
+
 #endif
 
