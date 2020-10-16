@@ -6,6 +6,7 @@ blink is a static library written in C that can write machine code bytes for a
 variety of instruction sets directly to a file stream.
 
 Currently supported instruction sets are:
+	- mos6502
 	- x86_64
 
 Please note:
