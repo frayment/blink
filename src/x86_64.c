@@ -18,6 +18,12 @@
 
 static FILE *enc_fp = NULL;
 
+void
+x86_64_encoder_out(FILE *fp)
+{
+	enc_fp = fp;
+}
+
 size_t
 x86_64_write(int8_t i)
 {
@@ -29,31 +35,62 @@ x86_64_write(int8_t i)
 size_t
 x86_64_imm32(int32_t i)
 {
-	/*fprintf(enc_fp, "%02x %02x %02x %02x",
-	       (i & 0x000000FF),
-	       (i & 0x0000FF00) >> 8,
-	       (i & 0x00FF0000) >> 16,
-	       (i & 0xFF000000) >> 24);*/
+	int endian;
 	if (enc_fp == NULL)
 		return sizeof(i);
-	return fwrite(&i, sizeof(i), 1, enc_fp);
+	endian = 1;
+	/* check host system endianness */
+	if (*((char *) &endian))
+	{
+		/* little endian (native) */
+		return x86_64_write(i & 0x000000FF) +
+		       x86_64_write((i & 0x0000FF00) >> 8) +
+		       x86_64_write((i & 0x00FF0000) >> 16) +
+		       x86_64_write((i & 0xFF000000) >> 24);
+	}
+	else
+	{
+		/* big endian (convert) */
+		return x86_64_write((i & 0xFF000000) >> 24) +
+		       x86_64_write((i & 0x00FF0000) >> 16) +
+		       x86_64_write((i & 0x0000FF00) >> 8) +
+		       x86_64_write(i & 0x000000FF);
+	}
+	/*return fwrite(&i, sizeof(i), 1, enc_fp);*/
 }
 
 size_t
 x86_64_imm64(int64_t i)
 {
-	/*fprintf(enc_fp, "%02llx %02llx %02llx %02llx %02llx %02llx %02llx %02llx",
-	       (i & 0x00000000000000FF),
-	       (i & 0x000000000000FF00) >> 8,
-	       (i & 0x0000000000FF0000) >> 16,
-	       (i & 0x00000000FF000000) >> 24,
-	       (i & 0x000000FF00000000) >> 32,
-	       (i & 0x0000FF0000000000) >> 40,
-	       (i & 0x00FF000000000000) >> 48,
-	       (i & 0xFF00000000000000) >> 56);*/
+	int endian;
 	if (enc_fp == NULL)
 		return sizeof(i);
-	return fwrite(&i, sizeof(i), 1, enc_fp);
+	endian = 1;
+	if (*((char *) &endian))
+	{
+		/* little endian (native) */
+		return x86_64_write(i & 0x00000000000000FF) +
+		       x86_64_write((i & 0x000000000000FF00) >> 8) +
+	           x86_64_write((i & 0x0000000000FF0000) >> 16) +
+	           x86_64_write((i & 0x00000000FF000000) >> 24) +
+	           x86_64_write((i & 0x000000FF00000000) >> 32) +
+	           x86_64_write((i & 0x0000FF0000000000) >> 40) +
+	           x86_64_write((i & 0x00FF000000000000) >> 48) +
+	           x86_64_write((i & 0xFF00000000000000) >> 56);
+	}
+	else
+	{
+		/* big endian (convert) */
+		return x86_64_write((i & 0xFF00000000000000) >> 56) +
+	           x86_64_write((i & 0x00FF000000000000) >> 48) +
+	           x86_64_write((i & 0x0000FF0000000000) >> 40) +
+	           x86_64_write((i & 0x000000FF00000000) >> 32) +
+	           x86_64_write((i & 0x00000000FF000000) >> 24) +
+	           x86_64_write((i & 0x0000000000FF0000) >> 16) +
+		       x86_64_write((i & 0x000000000000FF00) >> 8) +
+		       x86_64_write(i & 0x00000000000000FF);
+	}
+	/*return fwrite(&i, sizeof(i), 1, enc_fp);*/
 }
 
 size_t
@@ -202,11 +239,5 @@ x86_64_nop_r64(X86_64_REG reg)
 	       x86_64_write(0x0f) +
 	       x86_64_write(0x1f) +
 	       x86_64_modrm(3, reg, X86_64_RAX);
-}
-
-void
-x86_64_encoder_out(FILE *fp)
-{
-	enc_fp = fp;
 }
 

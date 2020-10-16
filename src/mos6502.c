@@ -35,10 +35,16 @@ mos6502_write(int8_t i)
 size_t
 mos6502_imm16(int16_t i)
 {
+	int endian;
 	if (enc_fp == NULL)
 		return sizeof(i);
-	return fwrite(&i, sizeof(i), 1, enc_fp);
-	/*return mos6502_write((i & 0xFF00) >> 8) + mos6502_write(i & 0x00FF);*/
+	endian = 1;
+	/* check host system endianness */
+	if (*((char *) &endian)) /* little endian (native) */
+		return mos6502_write(i & 0x00FF) + mos6502_write((i & 0xFF00) >> 8);
+	else                    /* big endian (convert) */
+		return mos6502_write((i & 0xFF00) >> 8) + mos6502_write(i & 0x00FF);
+	/*return fwrite(&i, sizeof(i), 1, enc_fp);*/
 }
 
 size_t
