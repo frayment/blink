@@ -7,6 +7,7 @@ variety of instruction sets directly to a file stream.
 
 Partially supported instruction sets are:
 	- x86_64
+	- z80
 
 Fully supported instruction sets are:
 	- mos6502

@@ -13,7 +13,7 @@ PREFIX:=/usr/local
 # If you do not want to include a platform, remove it from the list and it will
 # not be compiled into the resulting library and its header will not be
 # installed if `make install` is run.
-PLATFORMS:=mos6502 x86_64
+PLATFORMS:=mos6502 x86_64 z80
 
 CC:=cc
 CCFLAGS:=-O2 --std=c89 \
