@@ -60,3 +60,15 @@ mos6502_nop()
 	return mos6502_write((int8_t) 0xea);
 }
 
+size_t
+mos6502_bit_abs8(int8_t value)
+{
+	return mos6502_write(0x24) + mos6502_write(value);
+}
+
+size_t
+mos6502_bit_abs16(int16_t value)
+{
+	return mos6502_write(0x2c) + mos6502_imm16(value);
+}
+
