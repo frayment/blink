@@ -269,24 +269,6 @@ mos6502_nop()
 }
 
 size_t
-mos6502_pha()
-{
-	return mos6502_write(0x48);
-}
-
-size_t
-mos6502_php()
-{
-	return mos6502_write(0x08);
-}
-
-size_t
-mos6502_pla()
-{
-	return mos6502_write(0x68);
-}
-
-size_t
 mos6502_rol_imm8(int8_t value)
 {
 	return mos6502_write(0x2a) + mos6502_write(value);
