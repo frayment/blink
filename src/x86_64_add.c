@@ -27,7 +27,7 @@ x86_64_add_r64_imm8(X86_64_REG reg,
 {
 	return x86_64_rex(1, 0, 0, X86_64_REG64(reg)) +
 	       x86_64_write((int8_t) 0x83) +
-	       x86_64_write(0xc0 + (X86_64_REG64(reg) ? reg - 8 : reg)) +
+	       x86_64_modrm(3, reg, X86_64_RAX) +
 	       x86_64_write(value);
 }
 
@@ -36,10 +36,10 @@ x86_64_add_r32_imm32(X86_64_REG reg,
                      int32_t value)
 {
 	return x86_64_rex(1, 0, 0, X86_64_REG64(reg)) +
-	       (reg == X86_64_RAX ? 
+	       (reg == X86_64_RAX ?
 	           x86_64_write(0x05) :
 	           x86_64_write((int8_t) 0x81) +
-	           x86_64_write(0xc0 + (X86_64_REG64(reg) ? reg - 8 : reg))) +
+		       x86_64_modrm(3, reg, X86_64_RAX)) +
 	       x86_64_imm32(value);
 }
 

@@ -36,7 +36,7 @@ x86_64_sub_r32_imm32(X86_64_REG reg,
                      int32_t value)
 {
 	return x86_64_rex(1, 0, 0, X86_64_REG64(reg)) +
-	       (reg == X86_64_RAX ? 
+	       (reg == X86_64_RAX ?
 	           x86_64_write(0x05 + 0x28) :
 	           x86_64_write((int8_t) 0x81) +
 	           x86_64_write(0xc0 + 0x28 + (X86_64_REG64(reg) ? reg - 8 : reg))) +
