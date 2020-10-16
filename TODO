@@ -1,0 +1,18 @@
+mos6502:
+	- Add tests for:
+		asl, bit, bcc, bcs, beq, bmi, bne, bpl, bvc, bvs, brk, cmp, cpx, cpy,
+		clc, cld, cli, clv, sec, sed, sei, dec, inc, jmp, jsr, lda, ldx, ldy,
+		lsr, nop, rol, ror, rti, rts, sta, stx, sty, tax, tay, txa, tya, inx,
+		iny, dex, dey, tsx, txs, pha, php, pla, plp
+	- Document opcodes.
+	- Check that tests work when ran on big-endian platforms.
+
+x86_64:
+	- Add tests.
+
+---------------------------------------------------
+
+Full instruction-set implementation:
+	- Add tests for all opcodes.
+	- Document all opcodes.
+
