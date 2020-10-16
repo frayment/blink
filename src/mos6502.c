@@ -346,3 +346,15 @@ mos6502_ror_abs16_regx(int16_t value)
 	return mos6502_write(0x7e) + mos6502_imm16(value);
 }
 
+size_t
+mos6502_rti()
+{
+	return mos6502_write(0x40);
+}
+
+size_t
+mos6502_rts()
+{
+	return mos6502_write(0x60);
+}
+
