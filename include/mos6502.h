@@ -135,6 +135,27 @@ size_t mos6502_jmp_ind16(int16_t);
 
 size_t mos6502_jsr_abs16(int16_t);
 
+size_t mos6502_lda_imm8(int8_t);
+size_t mos6502_lda_abs8(int8_t);
+size_t mos6502_lda_abs8_rx(int8_t);
+size_t mos6502_lda_abs16(int16_t);
+size_t mos6502_lda_abs16_rx(int16_t);
+size_t mos6502_lda_abs16_ry(int16_t);
+size_t mos6502_lda_ind8_rx(int8_t);
+size_t mos6502_lda_ind8_ry(int8_t);
+
+size_t mos6502_ldx_imm8(int8_t);
+size_t mos6502_ldx_abs8(int8_t);
+size_t mos6502_ldx_abs8_regy(int8_t);
+size_t mos6502_ldx_abs16(int16_t);
+size_t mos6502_ldx_abs16_regy(int16_t);
+
+size_t mos6502_ldy_imm8(int8_t);
+size_t mos6502_ldy_abs8(int8_t);
+size_t mos6502_ldy_abs8_regx(int8_t);
+size_t mos6502_ldy_abs16(int16_t);
+size_t mos6502_ldy_abs16_regx(int16_t);
+
 size_t mos6502_nop();
 
 #endif
