@@ -20,23 +20,22 @@ CCFLAGS:=-O2 --std=c89 \
          -Wall -Wextra -Wpedantic -Werror --pedantic-errors \
          -DVERSION=\"${VERSION}\"
 
-SOURCES:=$(foreach platform,$(PLATFORMS),$(wildcard src/$(platform)*.c))
+SOURCES:=$(foreach platform,$(PLATFORMS),$(wildcard src/$(platform)/*.c))
 #SOURCES:=$(wildcard src/*.c)
 OBJECTS:=$(patsubst src/%,obj/%,$(patsubst %.c,%.o,$(SOURCES)))
 HEADERS:=$(patsubst %,include/%.h,$(PLATFORMS))
 #HEADERS:=$(wildcard include/*.h)
 INCLUDE:=-Iinclude/
 
-all: dirs $(OBJECTS)
+all: $(OBJECTS)
+	mkdir -p lib
 	rm -f lib/$(LIB)
 	ar -crv lib/$(LIB) $(OBJECTS)
 	ranlib lib/$(LIB)
 
 obj/%.o : src/%.c
+	mkdir -p $(shell dirname $@)
 	$(CC) $(CCFLAGS) $(INCLUDE) -c $< -o $@
-
-dirs:
-	mkdir -p lib obj
 
 clean:
 	rm -rf lib obj
