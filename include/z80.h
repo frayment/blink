@@ -85,6 +85,10 @@ size_t z80_and_imm8(int8_t);
 size_t z80_and_rhl();
 size_t z80_and_ir16_off8(Z80_REG, int8_t);
 
+size_t z80_bit_bit_r8(int8_t, Z80_REG);
+size_t z80_bit_bit_hl(int8_t);
+size_t z80_bit_bit_ir16_off8(int8_t, Z80_REG, int8_t);
+
 size_t z80_xor_r8(Z80_REG);
 size_t z80_xor_imm8(int8_t);
 size_t z80_xor_rhl();
