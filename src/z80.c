@@ -47,6 +47,23 @@ z80_imm16(int16_t i)
 	/*return fwrite(&i, sizeof(i), 1, enc_fp);*/
 }
 
+int
+z80_idx(Z80_REG reg)
+{
+	switch (reg)
+	{
+	case Z80_IX:  /* fall through */
+	case Z80_IXH:
+	case Z80_IXL:
+	case Z80_IY:
+	case Z80_IYH:
+	case Z80_IYL:
+		return 1;
+	default:
+		return 0;
+	}
+}
+
 size_t
 z80_i(Z80_REG reg)
 {
@@ -153,16 +170,10 @@ z80_rrr(int8_t base,
 size_t
 z80_xor_r8(Z80_REG reg)
 {
-	switch (reg)
-	{
-	case Z80_IXH: /* fall through */
-	case Z80_IXL:
-	case Z80_IYH:
-	case Z80_IYL:
+	if (z80_idx(reg))
 		return z80_i(reg) + z80_b(0xac, reg);
-	default:
+	else
 		return z80_rrr(0xa8, 0, reg);
-	}
 }
 
 size_t
@@ -187,16 +198,10 @@ z80_xor_ir16_off8(Z80_REG reg,
 size_t
 z80_adc_r8(Z80_REG reg)
 {
-	switch (reg)
-	{
-	case Z80_IXH:
-	case Z80_IXL:
-	case Z80_IYH:
-	case Z80_IYL:
+	if (z80_idx(reg))
 		return z80_i(reg) + z80_b(0x8c, reg);
-	default:
+	else
 		return z80_rrr(0x88, 0, reg);
-	}
 }
 
 size_t
@@ -222,5 +227,74 @@ size_t
 z80_adc_rhl_r16(Z80_REG reg)
 {
 	return z80_write(0xed) + z80_qq(0x4a, reg);
+}
+
+size_t
+z80_add_r8(Z80_REG reg)
+{
+	if (z80_idx(reg))
+		return z80_i(reg) + z80_b(0x84, reg);
+	else
+		return z80_rrr(0x80, 0, reg);
+}
+
+size_t
+z80_add_imm8(int8_t value)
+{
+	return z80_write(0xc6) + z80_write(value);
+}
+
+size_t
+z80_add_rhl()
+{
+	return z80_write(0x86);
+}
+
+size_t
+z80_add_ir16_off8(Z80_REG reg,
+                  int8_t off)
+{
+	return z80_i(reg) + z80_write(0x86) + z80_write(off);
+}
+
+size_t
+z80_add_rhl_r16(Z80_REG reg)
+{
+	return z80_qq(0x09, reg);
+}
+
+size_t
+z80_add_ir16_r16(Z80_REG rega,
+                 Z80_REG regb)
+{
+	return z80_i(rega) + z80_qq(0x09, regb);
+}
+
+size_t
+z80_and_r8(Z80_REG reg)
+{
+	if (z80_idx(reg))
+		return z80_i(reg) + z80_b(0xa4, reg);
+	else
+		return z80_rrr(0xa0, 0, reg);
+}
+
+size_t
+z80_and_imm8(int8_t value)
+{
+	return z80_write(0xe6) + z80_write(value);
+}
+
+size_t
+z80_and_rhl()
+{
+	return z80_write(0xa6);
+}
+
+size_t
+z80_and_ir16_off8(Z80_REG reg,
+				  int8_t off)
+{
+	return z80_i(reg) + z80_write(0xa6) + z80_write(off);
 }
 
