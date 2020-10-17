@@ -56,55 +56,98 @@ z80_i(Z80_REG reg)
 }
 
 size_t
-z80_b(int8_t base, Z80_REG reg)
+z80_b(int8_t base,
+      Z80_REG reg)
 {
 	return z80_write(base + (reg == Z80_IXL || reg == Z80_IYL));
 }
 
-int8_t
-z80_pp(Z80_REG reg)
+size_t
+z80_pp(int8_t base,
+       Z80_REG reg)
 {
+	int8_t pp;
 	switch (reg)
 	{
-	case Z80_BC: return 0x0;
-	case Z80_DE: return 0x1;
-	case Z80_HL: return 0x2;
-	case Z80_AF: return 0x3;
-	default: return 0x0;
+	case Z80_BC:
+		pp = 0x0;
+		break;
+	case Z80_DE:
+		pp = 0x1;
+		break;
+	case Z80_HL:
+		pp = 0x2;
+		break;
+	case Z80_AF:
+		pp = 0x3;
+		break;
+	default:
+		pp = 0x0;
 	}
+	return z80_write(base + (pp << 4));
 }
 
-int8_t
-z80_qq(Z80_REG reg)
+size_t
+z80_qq(int8_t base,
+       Z80_REG reg)
 {
+	int8_t qq;
 	switch (reg)
 	{
-	case Z80_BC: return 0x0;
-	case Z80_DE: return 0x1;
+	case Z80_BC:
+		qq = 0x0;
+		break;
+	case Z80_DE:
+		qq = 0x1;
+		break;
 	case Z80_HL: /* fall through */
 	case Z80_IX:
 	case Z80_IY:
-		return 0x2;
+		qq = 0x2;
+		break;
 	case Z80_SP:
-		return 0x3;
-	default: return 0x0;
+		qq = 0x3;
+		break;
+	default:
+		qq = 0x0;
 	}
+	return z80_write(base + (qq << 4));
 }
 
-int8_t
-z80_rrr(Z80_REG reg)
+size_t
+z80_rrr(int8_t base,
+        int8_t shift,
+        Z80_REG reg)
 {
+	int8_t rrr;
 	switch (reg)
 	{
-	case Z80_A: return 0x7;
-	case Z80_B: return 0x0;
-	case Z80_C: return 0x1;
-	case Z80_D: return 0x2;
-	case Z80_E: return 0x3;
-	case Z80_H: return 0x4;
-	case Z80_L: return 0x5;
-	default: return 0x0;
+	case Z80_A:
+		rrr = 0x7;
+		break;
+	case Z80_B:
+		rrr = 0x0;
+		break;
+	case Z80_C:
+		rrr = 0x1;
+		break;
+	case Z80_D:
+		rrr = 0x2;
+		break;
+	case Z80_E:
+		rrr = 0x3;
+		break;
+	case Z80_H:
+		rrr = 0x4;
+		break;
+	case Z80_L:
+		rrr = 0x5;
+		break;
+	default:
+		rrr = 0x0;
+		break;
 	}
+	return z80_write(base + (reg << shift));
 }
 
 size_t
@@ -118,7 +161,7 @@ z80_xor_r8(Z80_REG reg)
 	case Z80_IYL:
 		return z80_i(reg) + z80_b(0xac, reg);
 	default:
-		return z80_write(0xa8 + z80_rrr(reg));
+		return z80_rrr(0xa8, 0, reg);
 	}
 }
 
@@ -135,8 +178,49 @@ z80_xor_rhl()
 }
 
 size_t
-z80_xor_ir16_off8(Z80_REG reg, int8_t off)
+z80_xor_ir16_off8(Z80_REG reg,
+                  int8_t off)
 {
 	return z80_i(reg) + z80_write(0xae) + z80_write(off);
+}
+
+size_t
+z80_adc_r8(Z80_REG reg)
+{
+	switch (reg)
+	{
+	case Z80_IXH:
+	case Z80_IXL:
+	case Z80_IYH:
+	case Z80_IYL:
+		return z80_i(reg) + z80_b(0x8c, reg);
+	default:
+		return z80_rrr(0x88, 0, reg);
+	}
+}
+
+size_t
+z80_adc_imm8(int8_t value)
+{
+	return z80_write(0xce) + z80_write(value);
+}
+
+size_t
+z80_adc_rhl()
+{
+	return z80_write(0x8e);
+}
+
+size_t
+z80_adc_ir16_off8(Z80_REG reg,
+                  int8_t off)
+{
+	return z80_i(reg) + z80_write(0x8e) + z80_write(off);
+}
+
+size_t
+z80_adc_rhl_r16(Z80_REG reg)
+{
+	return z80_write(0xed) + z80_qq(0x4a, reg);
 }
 

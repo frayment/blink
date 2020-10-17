@@ -62,8 +62,15 @@ size_t z80_imm16(int16_t);
 
 size_t z80_i(Z80_REG);
 size_t z80_b(int8_t, Z80_REG);
-int8_t z80_pp(Z80_REG);
-int8_t z80_qq(Z80_REG);
+size_t z80_pp(int8_t, Z80_REG);
+size_t z80_qq(int8_t, Z80_REG);
+size_t z80_rrr(int8_t, int8_t, Z80_REG);
+
+size_t z80_adc_ra_r8(Z80_REG);
+size_t z80_adc_ra_imm8(int8_t);
+size_t z80_adc_ra_rhl();
+size_t z80_adc_ra_ir16_off8(Z80_REG, int8_t);
+size_t z80_adc_rhl_r16(Z80_REG);
 
 size_t z80_xor_r8(Z80_REG);
 size_t z80_xor_imm8(int8_t);
