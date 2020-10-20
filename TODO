@@ -1,8 +1,8 @@
 mos6502:
 	- Add tests for:
-		asl, bit, bcc, bcs, beq, bmi, bne, bpl, bvc, bvs, brk, cpx, cpy,
-		clc, cld, cli, clv, sec, sed, sei, dec, inc, lda, ldx, ldy,
-		lsr, nop, rol, ror, sta, stx, sty
+		asl, bit, bcc, bcs, beq, bmi, bne, bpl, bvc, bvs, brk,
+		clc, cld, cli, clv, sec, sed, sei, dec, inc, lda,
+		lsr, nop, rol, ror, sta
 	- Document opcodes.
 
 x86_64:
