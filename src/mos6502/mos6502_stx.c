@@ -20,7 +20,7 @@ mos6502_stx_abs8(int8_t value)
 }
 
 size_t
-mos6502_stx_abs8_rx(int8_t value)
+mos6502_stx_abs8_ry(int8_t value)
 {
 	return mos6502_write(0x96) + mos6502_write(value);
 }
