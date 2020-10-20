@@ -158,9 +158,9 @@ size_t mos6502_sei();
  * dec - decrement memory
  */
 size_t mos6502_dec_abs8(int8_t);
-size_t mos6502_dec_abs8_regx(int8_t);
+size_t mos6502_dec_abs8_rx(int8_t);
 size_t mos6502_dec_abs16(int16_t);
-size_t mos6502_dec_abs16_regx(int16_t);
+size_t mos6502_dec_abs16_rx(int16_t);
 
 /*
  * eor - bitwise exclusive OR
@@ -178,9 +178,9 @@ size_t mos6502_eor_ind8_ry(int8_t);
  * inc - increment memory
  */
 size_t mos6502_inc_abs8(int8_t);
-size_t mos6502_inc_abs8_regx(int8_t);
+size_t mos6502_inc_abs8_rx(int8_t);
 size_t mos6502_inc_abs16(int16_t);
-size_t mos6502_inc_abs16_regx(int16_t);
+size_t mos6502_inc_abs16_rx(int16_t);
 
 /*
  * jmp - jump
@@ -210,18 +210,18 @@ size_t mos6502_lda_ind8_ry(int8_t);
  */
 size_t mos6502_ldx_imm8(int8_t);
 size_t mos6502_ldx_abs8(int8_t);
-size_t mos6502_ldx_abs8_regy(int8_t);
+size_t mos6502_ldx_abs8_ry(int8_t);
 size_t mos6502_ldx_abs16(int16_t);
-size_t mos6502_ldx_abs16_regy(int16_t);
+size_t mos6502_ldx_abs16_ry(int16_t);
 
 /*
  * ldy - load Y register
  */
 size_t mos6502_ldy_imm8(int8_t);
 size_t mos6502_ldy_abs8(int8_t);
-size_t mos6502_ldy_abs8_regx(int8_t);
+size_t mos6502_ldy_abs8_rx(int8_t);
 size_t mos6502_ldy_abs16(int16_t);
-size_t mos6502_ldy_abs16_regx(int16_t);
+size_t mos6502_ldy_abs16_rx(int16_t);
 
 /*
  * lsr - logical shift right
