@@ -311,7 +311,7 @@ size_t mos6502_stx_abs16(int16_t);
  * sty - store Y register
  */
 size_t mos6502_sty_abs8(int8_t);
-size_t mos6502_sty_abs8_ry(int8_t);
+size_t mos6502_sty_abs8_rx(int8_t);
 size_t mos6502_sty_abs16(int16_t);
 
 /*
