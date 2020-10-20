@@ -2,8 +2,7 @@ mos6502:
 	- Add tests for:
 		asl, bit, bcc, bcs, beq, bmi, bne, bpl, bvc, bvs, brk, cpx, cpy,
 		clc, cld, cli, clv, sec, sed, sei, dec, inc, lda, ldx, ldy,
-		lsr, nop, rol, ror, sta, stx, sty, tax, tay, txa, tya, inx,
-		iny, dex, dey, tsx, txs, pha, php, pla, plp
+		lsr, nop, rol, ror, sta, stx, sty
 	- Document opcodes.
 
 x86_64:
