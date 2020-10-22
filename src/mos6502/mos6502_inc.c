@@ -28,12 +28,12 @@ mos6502_inc_abs8_rx(int8_t value)
 size_t
 mos6502_inc_abs16(int16_t value)
 {
-	return mos6502_write((int8_t) 0xee) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xee) + mos6502_imm16(value);
 }
 
 size_t
 mos6502_inc_abs16_rx(int16_t value)
 {
-	return mos6502_write((int8_t) 0xfe) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xfe) + mos6502_imm16(value);
 }
 
