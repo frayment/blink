@@ -1,7 +1,3 @@
-mos6502:
-	- Add tests for:
-		bit, brk, nop
-
 x86_64:
 	- Add tests.
 
