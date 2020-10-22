@@ -29,3 +29,13 @@ sbc $50ff, y
 sbc ($50, x)
 sbc ($50), y
 
+dec $50
+dec $50, x
+dec $50ff
+dec $50ff, x
+
+inc $50
+inc $50, x
+inc $50ff
+inc $50ff, x
+

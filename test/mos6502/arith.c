@@ -37,6 +37,16 @@ main()
 	mos6502_sbc_ind8_rx(0x50);
 	mos6502_sbc_ind8_ry(0x50);
 
+	mos6502_dec_abs8(0x50);
+	mos6502_dec_abs8_rx(0x50);
+	mos6502_dec_abs16(0x50ff);
+	mos6502_dec_abs16_rx(0x50ff);
+
+	mos6502_inc_abs8(0x50);
+	mos6502_inc_abs8_rx(0x50);
+	mos6502_inc_abs16(0x50ff);
+	mos6502_inc_abs16_rx(0x50ff);
+
 	return 0;
 }
 
