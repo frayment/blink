@@ -14,9 +14,9 @@
 #include "mos6502.h"
 
 size_t
-mos6502_ror_imm8(int8_t value)
+mos6502_ror_acc()
 {
-	return mos6502_write(0x6a) + mos6502_write(value);
+	return mos6502_write(0x6a);
 }
 
 size_t
