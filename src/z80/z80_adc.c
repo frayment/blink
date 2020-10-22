@@ -17,33 +17,33 @@ size_t
 z80_adc_r8(Z80_REG reg)
 {
 	if (z80_idx(reg))
-		return z80_i(reg) + z80_b(0x8c, reg);
+		return z80_i(reg) + z80_b((int8_t) 0x8c, reg);
 	else
-		return z80_rrr(0x88, 0, reg);
+		return z80_rrr((int8_t) 0x88, 0, reg);
 }
 
 size_t
 z80_adc_imm8(int8_t value)
 {
-	return z80_write(0xce) + z80_write(value);
+	return z80_write((int8_t) 0xce) + z80_write(value);
 }
 
 size_t
 z80_adc_rhl()
 {
-	return z80_write(0x8e);
+	return z80_write((int8_t) 0x8e);
 }
 
 size_t
 z80_adc_ir16_off8(Z80_REG reg,
                   int8_t off)
 {
-	return z80_i(reg) + z80_write(0x8e) + z80_write(off);
+	return z80_i(reg) + z80_write((int8_t) 0x8e) + z80_write(off);
 }
 
 size_t
 z80_adc_rhl_r16(Z80_REG reg)
 {
-	return z80_write(0xed) + z80_qq(0x4a, reg);
+	return z80_write((int8_t) 0xed) + z80_qq(0x4a, reg);
 }
 

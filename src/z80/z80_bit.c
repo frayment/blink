@@ -17,13 +17,13 @@ size_t
 z80_bit_bit_r8(int8_t bit,
                Z80_REG reg)
 {
-	return z80_write(0xcb) + z80_rrr(0x40 + (bit << 3), 0, reg);
+	return z80_write((int8_t) 0xcb) + z80_rrr(0x40 + (bit << 3), 0, reg);
 }
 
 size_t
 z80_bit_bit_hl(int8_t bit)
 {
-	return z80_write(0xcb) + z80_write(0x46 + (bit << 3));
+	return z80_write((int8_t) 0xcb) + z80_write(0x46 + (bit << 3));
 }
 
 size_t
@@ -32,7 +32,7 @@ z80_bit_bit_ir16_off8(int8_t bit,
                       int8_t off)
 {
 	return z80_i(reg) +
-           z80_write(0xcb) +
+           z80_write((int8_t) 0xcb) +
            z80_write(off) +
            z80_write(0x40 + (bit << 3));
 }

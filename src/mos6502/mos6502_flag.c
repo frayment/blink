@@ -34,7 +34,7 @@ mos6502_cli()
 size_t
 mos6502_clv()
 {
-	return mos6502_write(0xb8);
+	return mos6502_write((int8_t) 0xb8);
 }
 
 size_t

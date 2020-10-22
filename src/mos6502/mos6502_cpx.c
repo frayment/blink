@@ -16,18 +16,18 @@
 size_t
 mos6502_cpx_imm8(int8_t value)
 {
-	return mos6502_write(0xe0) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xe0) + mos6502_write(value);
 }
 
 size_t
 mos6502_cpx_abs8(int8_t value)
 {
-	return mos6502_write(0xe4) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xe4) + mos6502_write(value);
 }
 
 size_t
 mos6502_cpx_abs16(int16_t value)
 {
-	return mos6502_write(0xec) + mos6502_imm16(value);
+	return mos6502_write((int8_t) 0xec) + mos6502_imm16(value);
 }
 

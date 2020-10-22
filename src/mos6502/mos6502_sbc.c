@@ -16,48 +16,48 @@
 size_t
 mos6502_sbc_imm8(int8_t value)
 {
-	return mos6502_write(0xe9) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xe9) + mos6502_write(value);
 }
 
 size_t
 mos6502_sbc_abs8(int8_t value)
 {
-	return mos6502_write(0xe5) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xe5) + mos6502_write(value);
 }
 
 size_t
 mos6502_sbc_abs8_rx(int8_t value)
 {
-	return mos6502_write(0xf5) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xf5) + mos6502_write(value);
 }
 
 size_t
 mos6502_sbc_abs16(int16_t value)
 {
-	return mos6502_write(0xed) + mos6502_imm16(value);
+	return mos6502_write((int8_t) 0xed) + mos6502_imm16(value);
 }
 
 size_t
 mos6502_sbc_abs16_rx(int16_t value)
 {
-	return mos6502_write(0xfd) + mos6502_imm16(value);
+	return mos6502_write((int8_t) 0xfd) + mos6502_imm16(value);
 }
 
 size_t
 mos6502_sbc_abs16_ry(int16_t value)
 {
-	return mos6502_write(0xf9) + mos6502_imm16(value);
+	return mos6502_write((int8_t) 0xf9) + mos6502_imm16(value);
 }
 
 size_t
 mos6502_sbc_ind8_rx(int8_t value)
 {
-	return mos6502_write(0xe1) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xe1) + mos6502_write(value);
 }
 
 size_t
 mos6502_sbc_ind8_ry(int8_t value)
 {
-	return mos6502_write(0xf1) + mos6502_write(value);
+	return mos6502_write((int8_t) 0xf1) + mos6502_write(value);
 }
 

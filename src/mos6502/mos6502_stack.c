@@ -16,13 +16,13 @@
 size_t
 mos6502_tsx()
 {
-	return mos6502_write(0xba);
+	return mos6502_write((int8_t) 0xba);
 }
 
 size_t
 mos6502_txs()
 {
-	return mos6502_write(0x9a);
+	return mos6502_write((int8_t) 0x9a);
 }
 
 size_t

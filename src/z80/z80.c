@@ -136,7 +136,7 @@ z80_rrr(int8_t base,
         int8_t shift,
         Z80_REG reg)
 {
-	int8_t rrr;
+	/*int8_t rrr;
 	switch (reg)
 	{
 	case Z80_A:
@@ -163,7 +163,7 @@ z80_rrr(int8_t base,
 	default:
 		rrr = 0x0;
 		break;
-	}
+	}*/
 	return z80_write(base + (reg << shift));
 }
 

@@ -16,48 +16,48 @@
 size_t
 mos6502_tax()
 {
-	return mos6502_write(0xaa);
+	return mos6502_write((int8_t) 0xaa);
 }
 
 size_t
 mos6502_tay()
 {
-	return mos6502_write(0xa8);
+	return mos6502_write((int8_t) 0xa8);
 }
 
 size_t
 mos6502_txa()
 {
-	return mos6502_write(0x8a);
+	return mos6502_write((int8_t) 0x8a);
 }
 
 size_t
 mos6502_tya()
 {
-	return mos6502_write(0x98);
+	return mos6502_write((int8_t) 0x98);
 }
 
 size_t
 mos6502_inx()
 {
-	return mos6502_write(0xe8);
+	return mos6502_write((int8_t) 0xe8);
 }
 
 size_t
 mos6502_iny()
 {
-	return mos6502_write(0xc8);
+	return mos6502_write((int8_t) 0xc8);
 }
 
 size_t
 mos6502_dex()
 {
-	return mos6502_write(0xca);
+	return mos6502_write((int8_t) 0xca);
 }
 
 size_t
 mos6502_dey()
 {
-	return mos6502_write(0x88);
+	return mos6502_write((int8_t) 0x88);
 }
 
