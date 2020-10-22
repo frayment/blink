@@ -1,7 +1,6 @@
 mos6502:
 	- Add tests for:
-		bit, bcc, bcs, beq, bmi, bne, bpl, bvc, bvs, brk,
-		dec, inc, lda, nop, sta
+		bit, brk, dec, inc, lda, nop, sta
 
 x86_64:
 	- Add tests.
