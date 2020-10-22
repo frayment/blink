@@ -18,34 +18,41 @@
 #include <stdio.h>
 
 /*
- * #define MOS6502_A  0x1
- * #define MOS6502_X  0x2
- * #define MOS6502_Y  0x3
- * #define MOS6502_PC 0x4
- * #define MOS6502_S  0x5
- * #define MOS6502_P  0x6
-
- * typedef int MOS6502_REG;
+ * The 6502 CPU uses different addressing modes and the assembler contains
+ * unique syntax for each mode. The following table contains these modes and
+ * syntax as well as function suffixes.
+ *
+ *     MODE:        SYNTAX (example):  FUNCTION SUFFIX:
+ *     Accumulator  ROR A              acc
+ *     Implied      BRK                <none>
+ *     Immediate    CMP #$A4           imm8
+ *     Zero Page    INC $90            abs8
+ *     Zero Page,X  LDA $61,X          abs8_rx
+ *     Zero Page,Y  LDX $14,Y          abs8_ry
+ *     Absolute     ORA $C030          abs16
+ *     Absolute,X   ROL $4040,X        abs16_rx
+ *     Absolute,Y   EOR $ABBF,Y        abs16_ry
+ *     Indirect     JMP ($52B6)        ind16
+ *     Indirect,X   SBC ($9E,X)        ind8_rx
+ *     Indirect,Y   ADC ($21),Y        ind8_ry
  */
 
 /*
- * all of the following functions return size_t - this represents the number
- * of bytes that are written to the file pointer
+ * Set the output file for all function calls.
  *
- * instructions use intel syntax, that is:
- *     opcode destination source
- */
-
-/*
- * set the file pointer to write all bytes to
- *
- * should not error if set to NULL, instead write nothing but continue to
- * return the correct number of non-written bytes for each function
+ * Should not error if set to NULL, instead write nothing but continue to
+ * return the correct number of non-written bytes for each function.
  */
 void   mos6502_encoder_out(FILE *);
 
+/*
+ * write an 8-bit value
+ */
 size_t mos6502_write(int8_t);
 
+/*
+ * write a 16-bit immediate value in little-endian
+ */
 size_t mos6502_imm16(int16_t);
 
 /*
