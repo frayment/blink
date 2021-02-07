@@ -23,7 +23,7 @@
  * syntax as well as function suffixes.
  *
  *     MODE:        SYNTAX (example):  FUNCTION SUFFIX:
- *     Accumulator  ROR A              acc
+ *     Accumulator  ROR                acc
  *     Implied      BRK                <none>
  *     Immediate    CMP #$A4           imm8
  *     Zero Page    INC $90            abs8
